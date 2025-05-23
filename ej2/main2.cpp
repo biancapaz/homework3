@@ -26,4 +26,6 @@ int main() {
 
     ProcesadorFigura<Rectangulo> f3;
     cout << "Area del rectangulo: " << f3.calcularArea(rect) << endl;
+
+    return 0;
 }
