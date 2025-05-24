@@ -4,72 +4,78 @@ using namespace std;
 class Punto {
     public:
         // Constructor
-        Punto(int x, int y);
+        Punto(float x, float y);
 
         // Metodos
-        void setX(int x);
-        void setY(int y);
-        int getX() const;
-        int getY() const;
+        void setX(float x);
+        void setY(float y);
+        float getX() const;
+        float getY() const;
 
     private:
         // Atributos
-        int x;
-        int y;
+        float x;
+        float y;
 };
 
 class Circulo : public Punto {
     public:
         // Constructor
-        Circulo(int x, int y, int radio);
+        Circulo(float x, float y, float radio);
 
         // Metodos
-        void setRadio(int radio);
-        int getRadio() const;
+        void setRadio(float radio);
+        float getRadio() const;
 
     private:
         // Atributos
-        int radio;
+        float radio;
 };
 
 class Elipse : public Punto {
     public:
         // Constructor
-        Elipse(int x, int y, int semiejeMenor, int semiejeMayor);
+        Elipse(float x, float y, float semiejeMenor, float semiejeMayor);
 
         // Metodos
-        void setSemiejeMenor(int semiejeMenor);
-        void setSemiejeMayor(int semiejeMayor);
-        int getSemiejeMenor() const;
-        int getSemiejeMayor() const;
+        void setSemiejeMenor(float semiejeMenor);
+        void setSemiejeMayor(float semiejeMayor);
+        float getSemiejeMenor() const;
+        float getSemiejeMayor() const;
 
     private:
         // Atributos
-        int semiejeMenor;
-        int semiejeMayor;
-        
+        float semiejeMenor;
+        float semiejeMayor;   
 };
 
 class Rectangulo : public Punto {
     public:
         // Constructor
-        Rectangulo(int x, int y, int base, int altura); // (x , y) es la poscicion de su vertice izquierdo inferior
+        Rectangulo(float x, float y, float base, float altura); // (x , y) es la poscicion de su vertice izquierdo inferior
 
         // Metodos
-        void setBase(int base);
-        void setAltura(int altura);
-        int getBase() const;
-        int getAltura() const;
+        void setBase(float base);
+        void setAltura(float altura);
+        float getBase() const;
+        float getAltura() const;
 
     private:
         // Atributos
-        int base;
-        int altura;
+        float base;
+        float altura;
 };
 
 // Declaración general del template
 template<typename T>
 class ProcesadorFigura;
+
+// Especialización para Circulo
+template<>
+class ProcesadorFigura<Punto> {
+    public:
+        int calcularArea(const Punto& punto);
+};
 
 // Especialización para Circulo
 template<>
@@ -89,5 +95,5 @@ class ProcesadorFigura<Elipse> {
 template<>
 class ProcesadorFigura<Rectangulo> {
     public:
-        int calcularArea(const Rectangulo& rect);
+        float calcularArea(const Rectangulo& rect);
 };

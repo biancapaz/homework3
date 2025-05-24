@@ -5,69 +5,73 @@ using namespace std;
 
 // Implementacion -> Punto
 
-Punto::Punto(int x, int y) : x(x), y(y) {};
+Punto::Punto(float x, float y) : x(x), y(y) {};
 
-void Punto::setX(int x) {
+void Punto::setX(float x) {
     this->x = x;
 };
-void Punto::setY(int y) {
+void Punto::setY(float y) {
     this->y = y;
 };
-int Punto::getX() const {
+float Punto::getX() const {
     return this->x;
 };
-int Punto::getY() const {
+float Punto::getY() const {
     return this->y;
 };
 
 
 // Implementacion -> Circulo
 
-Circulo::Circulo(int x, int y, int radio) : Punto(x, y), radio(radio) {};
+Circulo::Circulo(float x, float y, float radio) : Punto(x, y), radio(radio) {};
 
-void Circulo::setRadio(int radio) {
+void Circulo::setRadio(float radio) {
     this->radio = radio;
 };
-int Circulo::getRadio() const {
+float Circulo::getRadio() const {
     return this->radio;
 };
 
 // Implementacion -> Elipse
 
-Elipse::Elipse(int x, int y, int semiejeMenor, int semiejeMayor) : Punto(x, y), semiejeMenor(semiejeMenor), semiejeMayor(semiejeMayor) {};
+Elipse::Elipse(float x, float y, float semiejeMenor, float semiejeMayor) : Punto(x, y), semiejeMenor(semiejeMenor), semiejeMayor(semiejeMayor) {};
 
-void Elipse::setSemiejeMenor(int semiejeMenor) {
+void Elipse::setSemiejeMenor(float semiejeMenor) {
     this->semiejeMenor = semiejeMenor;
 };
-void Elipse::setSemiejeMayor(int semiejeMayor) {
+void Elipse::setSemiejeMayor(float semiejeMayor) {
     this->semiejeMayor = semiejeMayor;
 };
-int Elipse::getSemiejeMenor() const {
+float Elipse::getSemiejeMenor() const {
     return this->semiejeMenor;
 };
-int Elipse::getSemiejeMayor() const {
+float Elipse::getSemiejeMayor() const {
     return this->semiejeMayor;
 };
 
 
 // Implementacion -> Rectangulo
 
-Rectangulo::Rectangulo(int x, int y, int base, int altura) : Punto(x, y), base(base), altura(altura) {};
+Rectangulo::Rectangulo(float x, float y, float base, float altura) : Punto(x, y), base(base), altura(altura) {};
 
-void Rectangulo::setBase(int base) {
+void Rectangulo::setBase(float base) {
     this->base = base;
 };
-void Rectangulo::setAltura(int altura) {
+void Rectangulo::setAltura(float altura) {
     this->altura = altura;
 };
-int Rectangulo::getBase() const {
+float Rectangulo::getBase() const {
     return this->base;
 };
-int Rectangulo::getAltura() const {
+float Rectangulo::getAltura() const {
     return this->altura;
 };
 
 // implementacion -> ProcesadorArea
+int ProcesadorFigura<Punto>::calcularArea(const Punto& punto) {
+    // area del punto = 0
+    return 0;
+};
 float ProcesadorFigura<Circulo>::calcularArea(const Circulo& circulo) {
     // area del círculo = pi * r^2
     return PI * (circulo.getRadio() * circulo.getRadio());
@@ -76,7 +80,7 @@ float ProcesadorFigura<Elipse>::calcularArea(const Elipse& elipse) {
     // area del elipse = pi * semieje mayor * semieje menor
     return PI * elipse.getSemiejeMayor() * elipse.getSemiejeMenor();
 };
-int ProcesadorFigura<Rectangulo>::calcularArea(const Rectangulo& rect) {
+float ProcesadorFigura<Rectangulo>::calcularArea(const Rectangulo& rect) {
     // area del rectangulo = base * altura
     return rect.getBase() * rect.getAltura();
 }
