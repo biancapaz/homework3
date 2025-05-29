@@ -1,4 +1,4 @@
-#include "ej3.hpp"
+#include "headers/ej3.hpp"
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -11,10 +11,10 @@ GeneradorVectores::GeneradorVectores(){
     this->vectVectInt = vector<vector<int>>();
 };
 
-tuple<string, string, string> GeneradorVectores::procesar_vector() {
+tuple<string, string, string> GeneradorVectores::procesar_vector() const{
     return make_tuple(vectDouble_ToString(), vectString_ToString(), vectVectInt_ToString()); 
 };
-string GeneradorVectores::vectDouble_ToString() {
+string GeneradorVectores::vectDouble_ToString() const{
     string res = "[";
     for (size_t i = 0; i < vectDouble.size(); i++){
         res += to_string(vectDouble[i]);
@@ -25,7 +25,7 @@ string GeneradorVectores::vectDouble_ToString() {
     res += "],\n";
     return res;
 };
-string GeneradorVectores::vectString_ToString(){
+string GeneradorVectores::vectString_ToString() const {
     string res = "[";
     for (size_t i = 0; i < vectString.size(); i++){
         res += "\"" + vectString[i] + "\"";
@@ -36,7 +36,7 @@ string GeneradorVectores::vectString_ToString(){
     res += "],\n";
     return res;
 };
-string GeneradorVectores::vectVectInt_ToString(){
+string GeneradorVectores::vectVectInt_ToString() const {
     string res = "[";
     for (size_t i = 0; i < vectVectInt.size(); i++) {
         res += "\n\t[";
@@ -63,7 +63,6 @@ void GeneradorJSON::construirJSON(GeneradorVectores& v) {
     palabras = "\"palabras\":" + get<1>(t);
     vectInts = "\"listas\":" + get<2>(t);
 };
-void GeneradorJSON::mostrarJSON() {
-    JSON = "{ " + doubles + "  " + palabras + "  " +  vectInts + '}';
-    cout << JSON << endl;
+void GeneradorJSON::mostrarJSON() const {
+    cout << "{ " + doubles + "  " + palabras + "  " +  vectInts + '}' << endl;
 };

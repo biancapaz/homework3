@@ -1,4 +1,4 @@
-#include "ej2.hpp"
+#include "headers/ej2.hpp"
 #include <iostream>
 using namespace std;
 #define PI 3.14159
@@ -19,6 +19,11 @@ float Punto::getX() const {
 float Punto::getY() const {
     return this->y;
 };
+void Punto::mostrarDatos() const {
+    cout << "Datos del punto:" << endl;
+    cout << "X = " << x << endl;
+    cout << "Y = " << y << endl;
+};
 
 
 // Implementacion -> Circulo
@@ -30,6 +35,12 @@ void Circulo::setRadio(float radio) {
 };
 float Circulo::getRadio() const {
     return this->radio;
+};
+void Circulo::mostrarDatos() const {
+    cout << "Datos del circulo:" << endl;
+    cout << "X = " << this->getX() << endl;
+    cout << "Y = " << this->getY() << endl;
+    cout << "Radio = " << radio << endl;
 };
 
 // Implementacion -> Elipse
@@ -47,6 +58,13 @@ float Elipse::getSemiejeMenor() const {
 };
 float Elipse::getSemiejeMayor() const {
     return this->semiejeMayor;
+};
+void Elipse::mostrarDatos() const {
+    cout << "Datos del elipse:" << endl;
+    cout << "X = " << this->getX() << endl;
+    cout << "Y = " << this->getY() << endl;
+    cout << "Semieje Menor = " << semiejeMenor << endl;
+    cout << "Semieje Mayor = " << semiejeMayor << endl;
 };
 
 
@@ -66,21 +84,28 @@ float Rectangulo::getBase() const {
 float Rectangulo::getAltura() const {
     return this->altura;
 };
+void Rectangulo::mostrarDatos() const {
+    cout << "Datos del rectangulo:" << endl;
+    cout << "X = " << this->getX() << endl;
+    cout << "Y = " << this->getY() << endl;
+    cout << "Base = " << base << endl;
+    cout << "Altura = " << altura << endl;
+};
 
 // implementacion -> ProcesadorArea
-int ProcesadorFigura<Punto>::calcularArea(const Punto& punto) {
+int ProcesadorFigura<Punto>::calcularArea(const Punto& punto) const {
     // area del punto = 0
     return 0;
 };
-float ProcesadorFigura<Circulo>::calcularArea(const Circulo& circulo) {
+float ProcesadorFigura<Circulo>::calcularArea(const Circulo& circulo) const {
     // area del círculo = pi * r^2
     return PI * (circulo.getRadio() * circulo.getRadio());
 };
-float ProcesadorFigura<Elipse>::calcularArea(const Elipse& elipse) {
+float ProcesadorFigura<Elipse>::calcularArea(const Elipse& elipse) const {
     // area del elipse = pi * semieje mayor * semieje menor
     return PI * elipse.getSemiejeMayor() * elipse.getSemiejeMenor();
 };
-float ProcesadorFigura<Rectangulo>::calcularArea(const Rectangulo& rect) {
+float ProcesadorFigura<Rectangulo>::calcularArea(const Rectangulo& rect) const {
     // area del rectangulo = base * altura
     return rect.getBase() * rect.getAltura();
 }

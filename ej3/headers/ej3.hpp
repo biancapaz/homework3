@@ -25,12 +25,17 @@ class GeneradorVectores {
             else {
                 cout << "no es double, string ni vector de ints" << endl;
             }
-        };
+        }
 
-        tuple<string, string, string> procesar_vector();
-        string vectDouble_ToString();
-        string vectString_ToString();
-        string vectVectInt_ToString();
+        tuple<string, string, string> procesar_vector() const;
+        /*Devulve una tupla de strings.
+        posicion 0 -> vector de doubles (strings)
+        posicion 1 -> vector de strings (strings)
+        posicion 2 -> vector de vectores de ints (strings)
+        */
+        string vectDouble_ToString() const;
+        string vectString_ToString() const;
+        string vectVectInt_ToString() const;
     
     private:
         vector<double> vectDouble;
@@ -45,11 +50,10 @@ class GeneradorJSON {
 
         //Metodos
         void construirJSON(GeneradorVectores& v);
-        void mostrarJSON();
+        void mostrarJSON() const;
     
     private:
         string doubles;
         string palabras;
         string vectInts;
-        string JSON;
 };

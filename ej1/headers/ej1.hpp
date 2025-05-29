@@ -20,8 +20,8 @@ class MedicionBase : public IMediciones {
         // Metodos
         void serealizar(ofstream& out) const override;
         void deserealizar(ifstream& in) override;
-        float getTiempo();
-        virtual void imprimir();
+        float getTiempo() const;
+        virtual void imprimir() const;
     
     protected:
         unique_ptr<float> tiempoMedicion;
@@ -36,7 +36,7 @@ class Presion : public MedicionBase {
         // Metodos
         void serealizar(ofstream& out) const;
         void deserealizar(ifstream& in);
-        void imprimir() override;
+        void imprimir() const override;
 
         // Atributos
         float estatica;
@@ -52,7 +52,7 @@ class Posicion : public MedicionBase {
         // Metodos
         void serealizar(ofstream& out) const;
         void deserealizar(ifstream& in);
-        void imprimir() override;
+        void imprimir() const override;
 
         // Atributos
         float latitud;
@@ -68,7 +68,7 @@ class SaveFlightData {
         // Metodos
         void serealizar(ofstream& out) const;
         void deserealizar(ifstream& in);
-        void imprimir();
+        void imprimir() const;
 
         // Atributos
         Posicion posicion;

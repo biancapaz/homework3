@@ -1,4 +1,4 @@
-#include "ej1.hpp"
+#include "headers/ej1.hpp"
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -22,10 +22,10 @@ void MedicionBase::deserealizar(ifstream& in) {
     tiempoMedicion = make_unique<float>(0.0f);
     in.read(reinterpret_cast<char*>(tiempoMedicion.get()), sizeof(*tiempoMedicion));
 };
-float MedicionBase::getTiempo() {
+float MedicionBase::getTiempo() const {
     return *tiempoMedicion;
 };
-void MedicionBase::imprimir() {
+void MedicionBase::imprimir() const {
     cout << "Tiempo de medicion:" << *tiempoMedicion << endl;
 };
 
@@ -44,7 +44,7 @@ void Presion::deserealizar(ifstream& in) {
     in.read(reinterpret_cast<char*>(&estatica), sizeof(estatica));
     in.read(reinterpret_cast<char*>(&dinamica), sizeof(dinamica));
 };
-void Presion::imprimir() {
+void Presion::imprimir() const {
     MedicionBase::imprimir();
     cout << "Presion estatica: " << estatica << endl;
     cout << "Presion dinamica: " << dinamica << endl;
@@ -67,7 +67,7 @@ void Posicion::deserealizar(ifstream& in) {
     in.read(reinterpret_cast<char*>(&longitud), sizeof(longitud));
     in.read(reinterpret_cast<char*>(&altitud), sizeof(altitud));
 };
-void Posicion::imprimir() {
+void Posicion::imprimir() const {
     MedicionBase::imprimir();
     cout << "Latitud: " << latitud << endl;
     cout << "Longitud: " << longitud << endl;
@@ -86,7 +86,10 @@ void SaveFlightData::deserealizar(ifstream& in) {
     posicion.deserealizar(in);
     presion.deserealizar(in);
 };
-void SaveFlightData::imprimir() {
+void SaveFlightData::imprimir() const {
+    cout << "Posicion ->" << endl;
     posicion.imprimir();
+
+    cout << "Presion ->" << endl;
     presion.imprimir();
 };

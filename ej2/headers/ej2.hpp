@@ -11,6 +11,7 @@ class Punto {
         void setY(float y);
         float getX() const;
         float getY() const;
+        void mostrarDatos() const;
 
     private:
         // Atributos
@@ -26,6 +27,7 @@ class Circulo : public Punto {
         // Metodos
         void setRadio(float radio);
         float getRadio() const;
+        void mostrarDatos() const;
 
     private:
         // Atributos
@@ -42,6 +44,7 @@ class Elipse : public Punto {
         void setSemiejeMayor(float semiejeMayor);
         float getSemiejeMenor() const;
         float getSemiejeMayor() const;
+        void mostrarDatos() const;
 
     private:
         // Atributos
@@ -59,6 +62,7 @@ class Rectangulo : public Punto {
         void setAltura(float altura);
         float getBase() const;
         float getAltura() const;
+        void mostrarDatos() const;
 
     private:
         // Atributos
@@ -74,26 +78,26 @@ class ProcesadorFigura;
 template<>
 class ProcesadorFigura<Punto> {
     public:
-        int calcularArea(const Punto& punto);
+        int calcularArea(const Punto& punto) const;
 };
 
 // Especialización para Circulo
 template<>
 class ProcesadorFigura<Circulo> {
     public:
-        float calcularArea(const Circulo& circulo);
+        float calcularArea(const Circulo& circulo) const;
 };
 
 // Especialización para Elipse
 template<>
 class ProcesadorFigura<Elipse> {
     public:
-        float calcularArea(const Elipse& elipse);
+        float calcularArea(const Elipse& elipse) const;
 };
 
 // Especialización para Rectangulo
 template<>
 class ProcesadorFigura<Rectangulo> {
     public:
-        float calcularArea(const Rectangulo& rect);
+        float calcularArea(const Rectangulo& rect) const;
 };

@@ -3,13 +3,13 @@
 Lineas de compilacion
 
 1. 
-    g++ -g main1.cpp ej1.cpp -o program
-    ./program
+    g++ -Wall -Wextra -Wpedantic -g example/main1.cpp source/ej1.cpp -I. -o main
+    ./main
     
 2. 
-    g++ -g main2.cpp ej2.cpp -o program
-    ./program
+    g++ -Wall -Wextra -Wpedantic -g example/main2.cpp source/ej2.cpp -I. -o main
+    ./main
 
 3. 
-    g++ -g main3.cpp ej3.cpp -o program
-    ./program
+    g++ -Wall -Wextra -Wpedantic -g example/main3.cpp source/ej3.cpp -I. -o main
+    ./main

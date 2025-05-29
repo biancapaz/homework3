@@ -1,4 +1,4 @@
-#include "ej1.hpp"
+#include "headers/ej1.hpp"
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -8,7 +8,9 @@ int main() {
     Presion presion(101.3f, 5.8f, 6.1f);
 
     SaveFlightData fd1(posicion, presion);
+    cout << "Save Flight Data 1:" << endl;
     fd1.imprimir();
+    cout << endl;
 
     // serealizamos fd1
     ofstream out("fd1.dat", ios::binary);
@@ -27,7 +29,7 @@ int main() {
         in.close();
     }
 
-    cout << "\nimprimo fd2" << endl;
+    cout << "Save Flight Data Deserealizado:" << endl;
     fd2.imprimir();
     
     return 0;

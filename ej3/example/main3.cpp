@@ -1,4 +1,4 @@
-#include "ej3.hpp"
+#include "headers/ej3.hpp"
 #include <iostream>
 #include <fstream>
 #include <string>
