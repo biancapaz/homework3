@@ -11,9 +11,6 @@ GeneradorVectores::GeneradorVectores(){
     this->vectVectInt = vector<vector<int>>();
 };
 
-tuple<string, string, string> GeneradorVectores::procesar_vector() const{
-    return make_tuple(vectDouble_ToString(), vectString_ToString(), vectVectInt_ToString()); 
-};
 string GeneradorVectores::vectDouble_ToString() const{
     string res = "[";
     for (size_t i = 0; i < vectDouble.size(); i++){
@@ -58,10 +55,9 @@ string GeneradorVectores::vectVectInt_ToString() const {
 // Implementacion -> GeneradorJSON
 
 void GeneradorJSON::construirJSON(GeneradorVectores& v) {
-    tuple t = v.procesar_vector();
-    doubles = "\"vec_doubles\":" + get<0>(t);
-    palabras = "\"palabras\":" + get<1>(t);
-    vectInts = "\"listas\":" + get<2>(t);
+    doubles = "\"vec_doubles\":" + v.procesar_vector<double>();
+    palabras = "\"palabras\":" + v.procesar_vector<string>();
+    vectInts = "\"listas\":" + v.procesar_vector<vector<int>>();
 };
 void GeneradorJSON::mostrarJSON() const {
     cout << "{ " + doubles + "  " + palabras + "  " +  vectInts + '}' << endl;

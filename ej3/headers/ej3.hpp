@@ -27,12 +27,22 @@ class GeneradorVectores {
             }
         }
 
-        tuple<string, string, string> procesar_vector() const;
-        /*Devulve una tupla de strings.
-        posicion 0 -> vector de doubles (strings)
-        posicion 1 -> vector de strings (strings)
-        posicion 2 -> vector de vectores de ints (strings)
-        */
+        template<typename T>
+        string procesar_vector() const {
+            if constexpr(is_same_v<T, double>) {
+                return vectDouble_ToString();
+            }
+            else if constexpr(is_same_v<T, string>) {
+                return vectString_ToString();
+            }
+            else if constexpr(is_same_v<T, vector<int>>) {
+                return vectVectInt_ToString();
+            }
+            else {
+                return "Tipo no soportado";
+            }
+        }
+
         string vectDouble_ToString() const;
         string vectString_ToString() const;
         string vectVectInt_ToString() const;
