@@ -30,7 +30,7 @@ class MedicionBase : public IMediciones {
 class Presion : public MedicionBase {
     public:
         // Constructor
-        Presion(float tiempo, float estatica, float dinamica);
+        Presion(float estatica, float dinamica, float tiempo);
         Presion(const Presion& other);
 
         // Metodos
@@ -46,7 +46,7 @@ class Presion : public MedicionBase {
 class Posicion : public MedicionBase {
     public:
         // Constructor
-        Posicion(float tiempo, float latitud, float longitud, float altitud);
+        Posicion(float latitud, float longitud, float altitud, float tiempo);
         Posicion(const Posicion& other);
 
         // Metodos

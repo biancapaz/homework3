@@ -31,7 +31,7 @@ void MedicionBase::imprimir() const {
 
 // Implementacion -> Presion
 
-Presion::Presion(float tiempo, float estatica, float dinamica) : MedicionBase(tiempo), estatica(estatica), dinamica(dinamica) {};
+Presion::Presion(float estatica, float dinamica, float tiempo) : MedicionBase(tiempo), estatica(estatica), dinamica(dinamica) {};
 Presion::Presion(const Presion& other) : MedicionBase(*other.tiempoMedicion), estatica(other.estatica), dinamica(other.dinamica) {};
 
 void Presion::serealizar(ofstream& out) const {
@@ -52,7 +52,7 @@ void Presion::imprimir() const {
 
 // Implementacion -> Posicion
 
-Posicion::Posicion(float tiempo, float latitud, float longitud, float altitud) : MedicionBase(tiempo), latitud(latitud), longitud(longitud), altitud(altitud) {};
+Posicion::Posicion(float latitud, float longitud, float altitud, float tiempo) : MedicionBase(tiempo), latitud(latitud), longitud(longitud), altitud(altitud) {};
 Posicion::Posicion(const Posicion& other) : MedicionBase(*other.tiempoMedicion), latitud(other.latitud), longitud(other.longitud), altitud(other.altitud) {};
 
 void Posicion::serealizar(ofstream& out) const {
